@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录成功！</title>
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.6.4/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.6.4/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.6.4/demo/demo.css">
+	<script type="text/javascript" src="/static/jquery-easyui-1.6.4/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/jquery-easyui-1.6.4/jquery.easyui.min.js"></script>
+</head>
+<body class="easyui-layout">
+
+<!---    <div style="height: 8px;background-color:deeppink"></div>
+    <div>
+        <form action="/login" method="post">
+            <input type="text" name="username" placeholder="请输入名称"/>
+            <input type="text" name="password" placeholder="请输入密码"/>
+            <input type="text" name="gender" placeholder="请输入性别"/>
+            <button type="submit" title="提交后返回登录页面。" >提交</button>
+        </form>
+    </div> --->
+ <!---   <div>
+     <div style="height: 8px;background-color:deeppink"></div>
+        <table>
+            {% for row in da %}
+            <tr>
+
+                <td>姓名：{{ row.0 }}</td>
+                <td>年龄：{{ row.1 }}</td>
+                <td>性别：{{ row.2 }}</td>
+                <td>电话：{{ row.3 }}</td>
+
+            </tr>
+            {% endfor %}
+      {% for data in user_list %}
+            <tr>
+                <td>用户名：{{ data.username }}</td>
+                <td>密码：{{ data.password }}</td>
+                <td>性别：{{ data.gender }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>--->
+
+    <div data-options="region:'north',border:false"  style="height:100px;background:#B3DFDA;padding:10px;text-align:center">
+    <tr >
+        <td>
+           {% if userna %}
+                <h2><p style="color:red" >欢迎 {{ userna }} ！</p></h2>
+           {% endif %}
+        </td>
+    </tr>
+    </div>
+	<div data-options="region:'west',split:true,title:'功能栏头'" style="width:150px;padding:10px;">
+        <UL>
+            <LI>
+                <a href="/home" ><button>首页</button></a>
+            </LI>
+            <LI>
+                <a href="/login" ><button>注销</button></a>
+            </LI>
+        </UL>
+    </div>
+	<div data-options="region:'east',split:true,collapsed:true,title:'右侧栏头'" style="width:100px;padding:10px;">右侧栏</div>
+	<div data-options="region:'south',border:false" style="text-align:center;height:50px;background:#A9FACD;padding:10px;">维护公司</div>
+	<div data-options="region:'center',title:'中心'">
+         <table class="easyui-datagrid" border="1">
+            <thead>
+                <tr>
+                    <th data-options="field:'ip'" width="120">主机IP</th>
+                    <th data-options="field:'name'" width="120">主机名</th>
+                    <th data-options="field:'func'" width="120">功能</th>
+                    <th data-options="field:'manager'" width="120">责任人</th>
+{#                    <th data-options="field:'attr1'，align:'right'" width="150">Attribute</th>#}
+                    <th data-options="field:'status'" width="120">状态</th>
+                    <th data-options="field:'set'" width="120" title="设置">设置</th>
+                </tr>
+            </thead>
+            <tbody>
+            <from>
+             {% for row in da %}
+            <tr>
+                <td>{{ row.0 }}</td>
+                <td>{{ row.1 }}</td>
+                <td>{{ row.2 }}</td>
+                <td>{{ row.3 }}</td>
+                <td>{{ row.4 }}</td>
+                <td><a href="/edit?nid={{ row.0 }}" ><button>删除</button></a> </td>
+            </tr>
+            {% endfor %}
+            </from>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
